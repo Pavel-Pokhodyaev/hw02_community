@@ -52,12 +52,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'yatube.urls'
 
-TEMPLATES = [  #Настройка шаблонов
+TEMPLATES = [
+    # Настройка шаблонов
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates', 
-        #BACKEND какой язык шаблонов используется в проекте.
-        'DIRS': [os.path.join(BASE_DIR, 'templates')], 
-        #список директорий, где Django будет искать шаблоны
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # BACKEND какой язык шаблонов используется в проекте.
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        # список директорий, где Django будет искать шаблоны
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

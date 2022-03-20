@@ -9,10 +9,11 @@ def index(request):
     posts = Post.objects.order_by('-pub_date')[:10]
     title = 'Последние обновления на сайте'
     context = {
-        'title' : title,
+        'title': title,
         'posts': posts,
     }
-    return render(request, 'posts/index.html', context) 
+    return render(request, 'posts/index.html', context)
+
 
 # Страница с группой
 def group_posts(request, slug):
@@ -20,8 +21,8 @@ def group_posts(request, slug):
     posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
     title = 'Записи сообщества'
     context = {
-        'title' : title,
+        'title': title,
         'group': group,
         'posts': posts,
     }
-    return render(request, 'posts/group_list.html', context) 
+    return render(request, 'posts/group_list.html', context)
