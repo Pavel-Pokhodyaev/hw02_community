@@ -4,6 +4,7 @@
   <!-- класс py-3 создает отступы сверху и снизу блока -->
     <div class="container py-3">     
       <h1>{% block title %}{{ title }}{% endblock title %}</h1>
+      {% for post in page_obj %}
         <article>
             {% for post in posts %}
               <ul>
@@ -20,6 +21,8 @@
               {% endif %}
               {% if not forloop.last %}<hr>{% endif %}
             {% endfor %}
+        {% endfor %}
+          {% include 'posts/paginator.html' %}
          </article>
             <!-- под последним постом нет линии -->
      </div>  
