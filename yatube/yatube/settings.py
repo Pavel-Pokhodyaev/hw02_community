@@ -71,7 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth', 
                 'django.contrib.messages.context_processors.messages',
                 # Добавлен контекст-процессор
-                #'core.context_processors.year.year',
+                'core.context_processors.year.welcome',
             ],
         },
     },

@@ -15,7 +15,6 @@ def index(request):
     context = {
         'title': title,
         'page_obj': page_obj,
-        'posts': posts,
     }
     return render(request, 'posts/index.html', context)
 
