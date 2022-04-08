@@ -20,8 +20,10 @@
                 <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
               {% endif %}
               {% if not forloop.last %}<hr>{% endif %}
-            
         {% endfor %}
+        <h3>
+          <a href="{% url 'posts:profile' user %}">все посты пользователя</a>
+         </h3>
           {% include 'posts/paginator.html' %}
          </article>
             <!-- под последним постом нет линии -->
