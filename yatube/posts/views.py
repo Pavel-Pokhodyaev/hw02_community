@@ -34,6 +34,7 @@ def group_posts(request, slug):
     }
     return render(request, 'posts/group_list.html', context)
 
+@login_required
 def profile(request, username):
     # Здесь код запроса к модели и создание словаря контекста
     author = get_object_or_404(User, username=username)
@@ -50,16 +51,15 @@ def profile(request, username):
     }
     return render(request, template, context)
 
-
+@login_required
 def post_detail(request, post_id):
     # Здесь код запроса к модели и создание словаря контекста
     post = get_object_or_404(Post, pk=post_id)
     group = post.group
     author = post.author
-    posts_count = author.posts.count()
     context = {
-        'post_id' : post_id,
+        'author' : author,
+        'post' : post,
         'group' : group,
-        'posts_count' : posts_count,
     }
     return render(request, 'posts/post_detail.html', context)

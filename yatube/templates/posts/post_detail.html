@@ -4,39 +4,32 @@
 {% endblock %}
 {% block content %}
   <div class="row">
-    <aside class="col-12 col-md-6">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          Дата публикации: {{ post.pub_date|date:"d E Y" }} 
+    <aside class="col-12 col-md-5">
+      <ul>
+        <li class="list-group-item d-flex justify-content-between align-item-center">
+          Дата публикации:<span> {{ post.pub_date|date:"d E Y" }}</span> 
         </li>
-        <p>
-          Пост: {{ post.text }}
-        </p>
-        <p>
-          Группа: {{ group.title }}
-        </p>
+        <li class="list-group-item d-flex justify-content-between align-item-center">
+          Пост: <span> {{ post.text|truncatechars:30 }} </span>
+        </li>
+          <li class="list-group-item d-flex justify-content-between align-item-center">
+          Группа: <span> {{ group.title }}</span>
+          </li>
         {% if post.group %}
-         <il class="list-group-item">
+        <li class="list-group-item d-flex justify-content-between align-item-center">
            <a href="{% url 'posts:group_list' post.group.slug %}">
-             все записи группы
+             Все записи группы
            </a>
           </li>
           {% endif %}
-          Автор: {{ user.get_full_name }}
-        </li>
+          <li class="list-group-item d-flex justify-content-between align-item-center">
+          Автор: <span> {{ user.get_full_name }}</span>
+          </li>
         <li class="list-group-item d-flex justify-content-between align-item-center">
-          Всего постов автора: <span > {{ posts_count }}</span>
-        </li>
-        <li class="list-group-utem"base.html>
-          <a href="{% url 'posts:profile' user %}">
-            все посты пользователя
-          </a>
+          Всего постов автора: <span> {{ post.author.posts.count }}</span>
         </li>
       </aside>
       <article class="col-12 cal-md-9">
-        <p>
-          {{ post.text }}
-        </p>
       </article>
     </div>
     {% endblock %}
