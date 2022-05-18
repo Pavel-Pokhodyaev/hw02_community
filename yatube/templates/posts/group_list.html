@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<head>
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <title>{{group.title }}</title>
+</head>
       <!-- класс py-3 создает отступы сверху и снизу блока -->
       <div class="container py-3">
         <h1>{% block title %}{{title }}
