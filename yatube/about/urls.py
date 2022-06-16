@@ -6,6 +6,6 @@ from . import views
 app_name = 'about'
 
 urlpatterns = [
-    path('author/', views.JustStaticPage.as_view()),
-    path('tech/', views.JustStaticPage.as_view()),
+    path('author/', views.AboutAuthorView.as_view(), name='author'),
+    path('tech/', views.AboutTechView.as_view(), name='tech'),
 ] 
