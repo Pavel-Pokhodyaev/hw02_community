@@ -15,4 +15,5 @@ urlpatterns = [
     #path('index.html', views.index),
     path('group/<slug:slug>/', views.group_posts, name='group_list'),
     #path('about/', include('about.urls', namespace='about'))
+    path('post/create/', views.post_create, name='post_create'),
 ]

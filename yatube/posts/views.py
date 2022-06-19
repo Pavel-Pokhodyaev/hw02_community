@@ -2,9 +2,10 @@
 import imp
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from .models import Post, Group, User
 from django.contrib.auth import get_user_model
+from .forms import PostForm
 "Главная страница"
 
 User = get_user_model()
@@ -63,3 +64,18 @@ def post_detail(request, post_id):
         'group' : group,
     }
     return render(request, 'posts/post_detail.html', context)
+
+@login_required
+def post_create(request):
+    """Вью-функция страницы создания публикации"""
+    form = PostForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        post = form.save(commit=False)
+        post.author = request.user
+        form.save()
+
+        return redirect('posts:profile', username=post.author)
+
+    form = PostForm()
+
+    return render(request, 'posts/create_post.html', {'form': form})
